@@ -35,15 +35,15 @@ datetime_end = datetime.fromtimestamp(timestamp_end).strftime("%Y.%m.%d %H:%M:%S
 # print("The element", searchValue, " is found at: ", index)
 with open("wavedata_save07211127.csv") as f:
     data = pd.read_csv(f)
-    time_start1 = datetime.strptime(data['date'][0], "%Y.%m.%d %H:%M:%S")
+    time_start1 = datetime.strptime(data.date[20], "%Y.%m.%d %H:%M:%S")
     # Use time.mktime to convert datetime to timestamp    "2022.07.22 13:19:25"
-    timestamp_start1 = time.mktime(time_start.timetuple())
-    timestamp_end1 = timestamp_start + 3600
-    datetime_end1 = datetime.fromtimestamp(timestamp_end).strftime("%Y.%m.%d %H:%M:%S")
+    timestamp_start1 = time.mktime(time_start1.timetuple())
+    timestamp_end1 = timestamp_start1 + 3600
+    datetime_end1 = datetime.fromtimestamp(timestamp_end1).strftime("%Y.%m.%d %H:%M:%S")
     # print(data['date'])
     index = 0
     while index < len(data['date']):
-        if (data['date'][index] == datetime_end1):
+        if (data.date[index] == datetime_end1):
             print(index)
             break
         index += 1
