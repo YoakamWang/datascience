@@ -12,8 +12,10 @@ def extract_table_info(filepath):
         for index in range(len(tables_info)):
             # 设置表格的第一行为表头，其余为数据
             df_table = pd.DataFrame(tables_info[index][1:], columns=tables_info[index][0])
-            print(df_table.iloc[0][3])
-            df_table.to_csv('dmeo'+str(index)+".csv", index=False, encoding='gbk')
+            # print(df_table.iloc[0][3])
+            # df_table=df_table.append(df_table,ignore_index=True) There are many warning for now so have to use concat
+            df_table = pd.concat([df_table, df_table], ignore_index=True)
+        df_table.to_csv("dmeo.csv", index=False, encoding='gbk')
 
 
 extract_table_info('56511e00_drw.pdf')
