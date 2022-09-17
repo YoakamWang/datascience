@@ -1,5 +1,3 @@
-import time
-
 import pandas as pd
 import pdfplumber
 import shutil
@@ -30,14 +28,14 @@ def extract_table_info():
         for i in range(len(pdf.pages)):
             page = pdf.pages[i]
             print(i)
-            writer = pd.ExcelWriter(basepath + '/test' + str(i) + ".xlsx", engine="openpyxl")
+            writer = pd.ExcelWriter(basepath + '/' + real_filename + "_page" + str(i) + ".xlsx", engine="openpyxl")
             tables_info = page.extract_tables()
             for index in range(len(tables_info)):
                 # 设置表格的第一行为表头，其余为数据
                 df_table = pd.DataFrame(tables_info[index][1:], columns=tables_info[index][0])
                 df_table.to_excel(basepath + "/sheet" + str(index) + ".xlsx", index=False)
                 tags.append(basepath + "/sheet" + str(index) + ".xlsx")
-            #`print(tags)
+            # `print(tags)
             for tag_value in tags:
                 data = pd.read_excel(tag_value, engine="openpyxl")
                 data.to_excel(writer, os.path.splitext(os.path.split(tag_value)[1])[0], index=False)
