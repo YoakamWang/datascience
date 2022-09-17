@@ -20,26 +20,27 @@ def get_path():
     filename = rel_path[1]
     exe_name = os.path.splitext(filename)
     rel_filename = exe_name[0]
-    return basepath, rel_filename
+    return path, basepath, rel_filename
 
 
-def extract_table_info(filepath):
+def extract_table_info():
     global tags
+    filepath, basepath, real_filename = get_path()
     with pdfplumber.open(filepath) as pdf:
         for i in range(len(pdf.pages)):
             page = pdf.pages[i]
             print(i)
-            writer = pd.ExcelWriter('test' + str(i) + ".xlsx", engine="openpyxl")
+            writer = pd.ExcelWriter(basepath + '/test' + str(i) + ".xlsx", engine="openpyxl")
             tables_info = page.extract_tables()
             for index in range(len(tables_info)):
                 # 设置表格的第一行为表头，其余为数据
                 df_table = pd.DataFrame(tables_info[index][1:], columns=tables_info[index][0])
-                df_table.to_excel("dmeo" + str(index) + ".xlsx", index=False)
-                tags.append("dmeo" + str(index) + ".xlsx")
-            print(tags)
+                df_table.to_excel(basepath + "/sheet" + str(index) + ".xlsx", index=False)
+                tags.append(basepath + "/sheet" + str(index) + ".xlsx")
+            #`print(tags)
             for tag_value in tags:
                 data = pd.read_excel(tag_value, engine="openpyxl")
-                data.to_excel(writer, tag_value, index=False)
+                data.to_excel(writer, os.path.splitext(os.path.split(tag_value)[1])[0], index=False)
             writer.save()
             writer.close()
             del_file()
@@ -54,4 +55,5 @@ def del_file():
 
 
 if __name__ == "__main__":
-    extract_table_info("56511e00_drw.pdf")
+    extract_table_info()
+    del_file()
