@@ -15,6 +15,7 @@ def remove_brackets(str):
 
 
 # mo=coordinate.search("<FD>pos_in_mm(-16,-1928)")
+# get the last third coordinate
 def get_coordinate(file):
     coo = []
     with open(file, "r") as txt:
