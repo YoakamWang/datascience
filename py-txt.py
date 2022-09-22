@@ -47,6 +47,7 @@ if __name__ == "__main__":
         # print(filename)
         scoo_all.append(scoo)
         print(scoo)
+        #convert array to dataframe
         data = pd.DataFrame(scoo_all, columns=['x', 'y'], index=None)
         data.to_csv("test.csv")
 # remove_brackets("(-21,-1987)")
