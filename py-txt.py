@@ -1,6 +1,5 @@
 import os
 import re
-
 import pandas as pd
 
 coordinate = re.compile("(pos_in_mm.*)")  # ((-)?\d+,(-)?\d+)
@@ -16,6 +15,7 @@ def remove_brackets(str):
 
 # mo=coordinate.search("<FD>pos_in_mm(-16,-1928)")
 # get the last third coordinate
+
 def get_coordinate(file):
     coo = []
     with open(file, "r") as txt:
@@ -38,8 +38,8 @@ def get_txt_file(path1):
     return files
 
 
-if __name__ == "__main__":
-    all_files = get_txt_file("D:/Files/A-Micro/Test Result/SC351/test0921/13m")
+def main(path):
+    all_files = get_txt_file(path)
     scoo_all = []
     for file in all_files:
         scoo = get_coordinate(file)
@@ -47,7 +47,10 @@ if __name__ == "__main__":
         # print(filename)
         scoo_all.append(scoo)
         print(scoo)
-        #convert array to dataframe
+        # convert array to dataframe
         data = pd.DataFrame(scoo_all, columns=['x', 'y'], index=None)
         data.to_csv("test.csv")
-# remove_brackets("(-21,-1987)")
+
+
+if __name__ == "__main__":
+    main("D:/Files/A-Micro/Test Result/SC351/test0921/13m")
