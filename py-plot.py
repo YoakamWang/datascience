@@ -39,13 +39,13 @@ rec = mpathes.Rectangle([B[min_values_11_index], values_11[min_values_11_index]]
                         abs(B[min_values_11_index2] - B[np.argsort(values_11)[0]]),
                         np.sort(values_11)[1] - min(values_11),
                         color='#ADD8E6', alpha=0.2)
-rec1 = mpathes.Rectangle([B[min_values_20_index], values_11[min_values_20_index]],
+rec1 = mpathes.Rectangle([B[min_values_20_index], values_20[min_values_20_index]],
                          abs(B[min_values_20_index2] - B[np.argsort(values_20)[0]]),
                          np.sort(values_20)[1] - min(values_20), color='#E6E6FA', alpha=0.2)
-rec2 = mpathes.Rectangle([B[min_values_8_index], values_11[min_values_8_index]],
+rec2 = mpathes.Rectangle([B[min_values_8_index], values_8[min_values_8_index]],
                          abs(B[min_values_8_index2] - B[np.argsort(values_8)[0]]), np.sort(values_8)[1] - min(values_8),
                          color='#7FFFAA', alpha=0.2)
-rec3 = mpathes.Rectangle([B[min_values_14_index], values_11[min_values_14_index]],
+rec3 = mpathes.Rectangle([B[min_values_14_index], values_14[min_values_14_index]],
                          abs(B[min_values_14_index2] - B[np.argsort(values_20)[0]]),
                          np.sort(values_14)[1] - min(values_14), color='#8B4513', alpha=0.2)
 
