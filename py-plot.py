@@ -46,7 +46,7 @@ rec2 = mpathes.Rectangle([B[min_values_8_index], values_8[min_values_8_index]],
                          abs(B[min_values_8_index2] - B[np.argsort(values_8)[0]]), np.sort(values_8)[1] - min(values_8),
                          color='#7FFFAA', alpha=0.2)
 rec3 = mpathes.Rectangle([B[min_values_14_index], values_14[min_values_14_index]],
-                         abs(B[min_values_14_index2] - B[np.argsort(values_20)[0]]),
+                         abs(B[min_values_14_index2] - B[np.argsort(values_14)[0]]),
                          np.sort(values_14)[1] - min(values_14), color='#8B4513', alpha=0.2)
 
 ax.add_patch(rec)
@@ -58,6 +58,7 @@ plt.plot(B, values_20, linestyle="solid", color='red')
 plt.plot(B, values_8, linestyle="solid", color='green')
 plt.plot(B, values_14, linestyle="solid", color='black')
 # plt.gcf().autofmt_xdate()
+plt.legend(['11#', '20#', '8 #', '16#'], loc='upper right')
 plt.title("Encoder Installation Test")
 plt.ylabel("The accuracy    %")
 plt.xlabel("Installation displacement     mm")
